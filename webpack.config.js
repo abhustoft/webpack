@@ -2,11 +2,11 @@ var path = require('path');
 var SRC = path.join(__dirname, 'src/');
 var NODE_MODULES = path.join(__dirname, 'node_modules/');
 var webpack = require('webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 var definePlugin = new webpack.DefinePlugin({
     PROD: JSON.stringify(JSON.parse(process.env.PROD || 'false'))
 });
-
 
 var commonsPlugin =
     new webpack.optimize.CommonsChunkPlugin('common.js');
@@ -42,7 +42,10 @@ var config = {
             }
         ]
     },
-    plugins: [definePlugin, commonsPlugin]
+    plugins: [
+        definePlugin, 
+        commonsPlugin,
+        new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['echo "Webpack End"']})]
 };
 
 module.exports = config;
