@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "build": "webpack",
-    "buildd": "BUILD_DEV=1 webpack",
-    "buildp": "BUILD_PRERELEASE=1 webpack",
-    "buildprod": "PROD=1 webpack",
+    "build": "webpack -d",
+    "build:prod": "PROD=1 webpack",
+    "build:prod:min": "PROD=1 webpack -p",
     "build:watch": "webpack --watch"
   },
   "author": "Alf Bjørn Hustoft",

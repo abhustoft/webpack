@@ -9,10 +9,13 @@ var definePlugin = new webpack.DefinePlugin({
 
 
 var config = {
-    entry: './src/index.js',       // entry point
+    entry: {
+        Index: './src/index.js',
+        Shout: './src/shout.js'
+    },       // entry points
     output: {                     // output folder
         path: './dist',           // folder path
-        filename: 'my-app.js'     // file name
+        filename: '[name].js'     // file names
     },
     resolve: {
         root: [SRC, NODE_MODULES],                  // root folders for Webpack resolving, so we can now call require('greet')
