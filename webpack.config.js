@@ -1,0 +1,42 @@
+var path = require('path');
+var SRC = path.join(__dirname, 'src/');
+var NODE_MODULES = path.join(__dirname, 'node_modules/');
+var webpack = require('webpack');
+
+var definePlugin = new webpack.DefinePlugin({
+    PROD: JSON.stringify(JSON.parse(process.env.PROD || 'false'))
+});
+
+
+var config = {
+    entry: './src',               // entry point
+    output: {                     // output folder
+        path: './dist',           // folder path
+        filename: 'my-app.js'     // file name
+    },
+    resolve: {
+        root: [SRC, NODE_MODULES],                  // root folders for Webpack resolving, so we can now call require('greet')
+        alias: {
+            'actions': path.join(SRC, 'actions/'),    // sample alias, calling require('actions/file') will resolve to ./src/actions/file.js
+            // ...
+        }
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                loader: 'babel',      // note that specifying 'babel' or 'babel-loader' is equivalent for Webpack
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style!css' // Note that the order is important here, it means that 'style-loader' will be applied to the ouput of 'css-loader'
+            }
+        ]
+    },
+    plugins: [definePlugin]
+};
+
+module.exports = config;
