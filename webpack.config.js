@@ -9,7 +9,7 @@ var definePlugin = new webpack.DefinePlugin({
 
 
 var config = {
-    entry: './src',               // entry point
+    entry: './src/index.js',       // entry point
     output: {                     // output folder
         path: './dist',           // folder path
         filename: 'my-app.js'     // file name

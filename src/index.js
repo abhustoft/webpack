@@ -1,9 +1,10 @@
+// Build mode from webpack
 if (PROD) {
-    require('./greet-prod.css');
+    require('./style/greet-prod.css');
 } else {
-    require('./greet.css');
+    require('./style/greet-dev.css');
 }
 
-const greet = require('./greet');   // Import the greet function
+import greet from './greet';
 
 greet('Webpack');

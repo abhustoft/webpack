@@ -1,4 +1,4 @@
-// src/greet.js
+
 //const moment = require('moment'); // Add momentjs
 
 function greet(who) {
