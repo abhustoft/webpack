@@ -8,6 +8,9 @@ var definePlugin = new webpack.DefinePlugin({
 });
 
 
+var commonsPlugin =
+    new webpack.optimize.CommonsChunkPlugin('common.js');
+
 var config = {
     entry: {
         Index: './src/index.js',
@@ -39,7 +42,7 @@ var config = {
             }
         ]
     },
-    plugins: [definePlugin]
+    plugins: [definePlugin, commonsPlugin]
 };
 
 module.exports = config;

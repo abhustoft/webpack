@@ -1,9 +1,7 @@
-
-//const moment = require('moment'); // Add momentjs
+const moment = require('moment'); // Add momentjs
 
 function greet(who) {
-    //console.log(`Hello ${who}, it's ${moment().format('h:mm:ss a')} !`);
-    console.log(`Hello ${who} !`);
+    console.log(`Hello ${who} from greet.js, it's ${moment().format('h:mm:ss a')} !`);
 };
 
 module.exports = greet;  
