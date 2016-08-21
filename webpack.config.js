@@ -52,6 +52,9 @@ var config = {
     ],
     eslint: {
         configFile: '.eslintrc'
+    },
+    watchOptions: {
+        poll: 500
     }
 };
 
