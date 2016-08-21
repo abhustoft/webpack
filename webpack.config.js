@@ -8,9 +8,6 @@ var definePlugin = new webpack.DefinePlugin({
     PROD: JSON.stringify(JSON.parse(process.env.PROD || 'false'))
 });
 
-var commonsPlugin =
-    new webpack.optimize.CommonsChunkPlugin('common.js');
-
 var config = {
     entry: {
         Index: './src/index.js',
@@ -28,6 +25,12 @@ var config = {
         }
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/, 
+                loader: "eslint-loader", 
+                exclude: /node_modules/}
+        ],
         loaders: [
             {
                 test: /\.js$/,
@@ -43,9 +46,13 @@ var config = {
         ]
     },
     plugins: [
-        definePlugin, 
-        commonsPlugin,
-        new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['echo "Webpack End"']})]
+        definePlugin,
+        new webpack.optimize.CommonsChunkPlugin('common.js'),
+        new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['echo "Webpack End"']})
+    ],
+    eslint: {
+        configFile: '.eslintrc'
+    }
 };
 
 module.exports = config;
