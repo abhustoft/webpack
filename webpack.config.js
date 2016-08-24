@@ -2,6 +2,7 @@ var path = require('path');
 var SRC = path.join(__dirname, 'src/');
 var NODE_MODULES = path.join(__dirname, 'node_modules/');
 var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
 var definePlugin = new webpack.DefinePlugin({
@@ -48,7 +49,9 @@ var config = {
     plugins: [
         definePlugin,
         new webpack.optimize.CommonsChunkPlugin('common.js'),
-        new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['echo "Webpack End"']})
+        new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['echo "Webpack End"']}),
+        new CleanWebpackPlugin(['dist'], {root: __dirname})
+
     ],
     eslint: {
         configFile: '.eslintrc'
