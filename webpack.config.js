@@ -1,5 +1,7 @@
 var path = require('path');
 var SRC = path.join(__dirname, 'src/');
+var images = path.join(__dirname, 'src/', 'image/');
+var styles = path.join(__dirname, 'src/', 'style/');
 var NODE_MODULES = path.join(__dirname, 'node_modules/');
 var webpack = require('webpack');
 var WebpackStripLoader = require('strip-loader');
@@ -19,11 +21,12 @@ var stripLoader = {
 var config = {
     entry: {
         Index: './src/index.js',
-        Shout: './src/shout.js'
+        Shout: './src/js/shout.js'
     },
     output: {                     // output folder
         path: './dist',           // folder path
-        filename: '[name].js'     // file names
+        filename: '[name].js',     // file names
+        publicPath: './dist/'
     },
     resolve: {
         root: [SRC, NODE_MODULES],                  // root folders for Webpack resolving, so we can now call require('greet')
@@ -33,11 +36,7 @@ var config = {
     },
     module: {
         preLoaders: [
-            // {
-            //     test: /\.js$/,
-            //     loader: "eslint-loader",
-            //     exclude: /node_modules/
-            // }
+
         ],
         loaders: [
             {
@@ -51,7 +50,13 @@ var config = {
             },
             {
                 test: /\.css$/,
-                loader: 'style!css' // Note that the order is important here, it means that 'style-loader' will be applied to the ouput of 'css-loader'
+                loader: 'style!css', // Note that the order is important here, it means that 'style-loader' will be applied to the ouput of 'css-loader'
+                include: styles
+            },
+            {
+                test: /\.(jpg|png)$/,
+                loader: "url",
+                include: images
             }
         ]
     },

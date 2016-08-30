@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './hello.jsx';
-import greet from './greet';
+import Hello from './components/hello.jsx';
+import greet from './js/greet';
 
 
 // Build mode from webpack
