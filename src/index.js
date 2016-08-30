@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import Hello from './components/hello.jsx';
 import greet from './js/greet';
 
+// To test moving a file
+import feet from './tull.tst';
+
 
 // Build mode from webpack
 if (PROD) { // eslint-disable-line no-undef

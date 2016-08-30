@@ -55,8 +55,12 @@ var config = {
             },
             {
                 test: /\.(jpg|png)$/,
-                loader: "url?limit=1",
+                loader: "url?limit=25000",
                 include: images
+            },
+            {   // Move a file (that has been required!)
+                test: /\.tst$/,
+                loader: "file?name=[path][name].[hash].[ext]"
             }
         ]
     },
