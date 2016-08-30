@@ -55,7 +55,7 @@ var config = {
             },
             {
                 test: /\.(jpg|png)$/,
-                loader: "url",
+                loader: "url?limit=1",
                 include: images
             }
         ]
