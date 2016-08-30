@@ -1,3 +1,7 @@
 .myDivClass {
     border: 1px solid red;
+    height: 200px;
+    width: 200px;
+    background-image: url(../image/ulv.jpg);
+    background-color: transparent;
 }

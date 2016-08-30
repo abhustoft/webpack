@@ -55,7 +55,7 @@ var config = {
             },
             {
                 test: /\.(jpg|png)$/,
-                loader: "url?limit=25000",
+                loader: "url?limit=2",
                 include: images
             },
             {   // Move a file (that has been required!)
@@ -79,9 +79,15 @@ var config = {
     }
 };
 
-// Buggy!!
 // if (process.env.PROD === '1') {
+//     Buggy!!
 //     config.module.loaders.push(stripLoader);
 // };
+
+if (process.env.PROD === '1') {
+    console.log('Load image from a fictous CDN');
+    config.output.publicPath = 'http://cdn/'
+    // Works: config.output.publicPath = '../webpack/dist/'
+}
 
 module.exports = config;
