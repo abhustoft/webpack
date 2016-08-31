@@ -2,6 +2,7 @@ var path = require('path');
 var SRC = path.join(__dirname, 'src/');
 var images = path.join(__dirname, 'src/', 'image/');
 var styles = path.join(__dirname, 'src/', 'style/');
+var fonts = path.join(__dirname, 'src/', 'fonts/');
 var NODE_MODULES = path.join(__dirname, 'node_modules/');
 var webpack = require('webpack');
 var WebpackStripLoader = require('strip-loader');
@@ -62,6 +63,11 @@ var config = {
                 loader: "url?limit=2",
                 include: images
             },
+            {
+                test: /\.ttf$/,
+                loader: "url",
+                include: fonts
+            },
             {   // Move a file (that has been required!)
                 test: /\.tst$/,
                 loader: "file?name=[path][name].[hash].[ext]"
@@ -90,8 +96,8 @@ var config = {
 
 if (process.env.PROD === '1') {
     console.log('Load image from a fictous CDN');
-    config.output.publicPath = 'http://cdn/'
-    // Works: config.output.publicPath = '../webpack/dist/'
+    //config.output.publicPath = 'http://cdn/'
+    config.output.publicPath = '../webpack-tut/dist/'
 }
 
 module.exports = config;
