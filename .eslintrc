@@ -3,5 +3,6 @@
     "rules": {
         "indent": [2, 4],
         "no-console": 0
-    }
+    },
+    "parser": "babel-eslint"
 }
