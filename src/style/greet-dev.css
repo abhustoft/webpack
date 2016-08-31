@@ -2,15 +2,20 @@
     border: 1px solid greenyellow;
     height: 100px;
     width: 100px;
-    background-image: url(../image/ulv.jpg);
+    background-image: url('../image/ulv.jpg');
     background-color: transparent;
 }
 
 @font-face {
     font-family: Chewy;
-    src: url(../fonts/Chewy/Chewy.ttf);
+    src: url('../fonts/Chewy/Chewy.ttf');
+}
+
+@font-face {
+    font-family: tizaregular;
+    src: url('../fonts/tiza/tiza-webfont.woff');
 }
 
 #root {
-    font-family: "Chewy";
+    font-family: "tizaregular";
 }

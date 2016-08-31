@@ -64,7 +64,7 @@ var config = {
                 include: images
             },
             {
-                test: /\.ttf$/,
+                test: /\.(ttf$|woff)$/,
                 loader: "url",
                 include: fonts
             },
